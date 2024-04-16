@@ -7,29 +7,30 @@ This script displays, based on an id  :
     _ Task_title (task_title)
 """
 
-from sys import argv
 import requests
+from sys import argv
 
 
 def Print_Employee_TODO_LIST(employee_id):
     """ Return API data """
     employee_name_request = requests.get(
         f'https://jsonplaceholder.typicode.com/users/{employee_id}')
-    employee_name = employee_name_request.json()['name']
+    EMPLOYEE_NAME = employee_name_request.json()['name']
     response_API = requests.get(
         f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
     todolist = response_API.json()
-    total_tasks = len(todolist)
+    USER_ID = employee_id
+    TOTAL_NUMBER_OF_TASKS = len(todolist)
     task_completed = [task for task in todolist if task['completed']]
-    number_of_done_tasks = len(task_completed)
+    NUMBER_OF_DONE_TASKS = len(task_completed)
     print(
         "Employee {} is done with tasks({}/{}):".format(
-            employee_name,
-            number_of_done_tasks,
-            total_tasks))
+            EMPLOYEE_NAME,
+            NUMBER_OF_DONE_TASKS,
+            TOTAL_NUMBER_OF_TASKS))
     for task in task_completed:
-        task_title = task['title']
-        print("\t {}".format(task_title))
+        TASK_TITLE = task['title']
+        print("\t {}".format(TASK_TITLE))
 
 
 if __name__ == "__main__":
