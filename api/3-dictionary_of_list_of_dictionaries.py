@@ -6,12 +6,13 @@ This script export data in Json format :
     _ Task_completed_stats (new_task_status)
     _ Task_title (new_task_title)
 """
+from sys import argv
 import requests
 import json
-from sys import argv
 
 
 def Print_Employee_TODO_LIST():
+    """ Return API data """
     employee_name_request = requests.get(
         f'https://jsonplaceholder.typicode.com/users')
     user_data = employee_name_request.json()

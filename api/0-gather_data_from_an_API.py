@@ -7,9 +7,8 @@ This script displays, based on an id  :
     _ Task_title (task_title)
 """
 
-import json
-import requests
 from sys import argv
+import requests
 
 
 def Print_Employee_TODO_LIST(employee_id):
@@ -24,8 +23,10 @@ def Print_Employee_TODO_LIST(employee_id):
     task_completed = [task for task in todolist if task['completed']]
     number_of_done_tasks = len(task_completed)
     print(
-        f"Employee {employee_name} is done\
-              with tasks({number_of_done_tasks}/{total_tasks}):")
+        "Employee {} is done with tasks({}/{}):".format(
+            employee_name,
+            number_of_done_tasks,
+            total_tasks))
     for task in task_completed:
         task_title = task['title']
         print("\t {}".format(task_title))
