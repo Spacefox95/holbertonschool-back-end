@@ -12,6 +12,7 @@ from sys import argv
 
 
 def Print_Employee_TODO_LIST(employee_id):
+    """ Return API data """
     employee_name_request = requests.get(
         f'https://jsonplaceholder.typicode.com/users/{employee_id}')
     username = employee_name_request.json()['username']
